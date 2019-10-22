@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 from .config import get_config
 
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
 
 CONFIG = get_config()
 BASE_DIR = CONFIG.BASE_DIR
@@ -111,12 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
@@ -142,9 +138,9 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-sentry_sdk.init(
-    dsn=os.environ["SENTRY_DSN"], integrations=[DjangoIntegration()]
-)
+# sentry_sdk.init(
+#     dsn=os.environ["SENTRY_DSN"], integrations=[DjangoIntegration()]
+# )
 
 # Celery application definition
 
@@ -158,9 +154,9 @@ CELERY_DEFAULT_QUEUE = "_PROJECT_NAME_"
 CELERY_BEAT_SCHEDULE = {}
 DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH = 191
 
-CORS_ORIGIN_ALLOW_ALL = CONFIG.CORS_ORIGIN_ALLOW_ALL
-CORS_ORIGIN_WHITELIST = CONFIG.CORS_ORIGIN_WHITELIST
-CORS_ALLOW_HEADERS = CONFIG.CORS_ALLOW_HEADERS
+# CORS_ORIGIN_ALLOW_ALL = CONFIG.CORS_ORIGIN_ALLOW_ALL
+# CORS_ORIGIN_WHITELIST = CONFIG.CORS_ORIGIN_WHITELIST
+# CORS_ALLOW_HEADERS = CONFIG.CORS_ALLOW_HEADERS
 
 
 if CONFIG.HEROKU:  # pragma: no cover

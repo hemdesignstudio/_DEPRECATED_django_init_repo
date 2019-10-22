@@ -15,6 +15,10 @@ grep -rl _PROJECT_NAME_ --exclude=install.sh . | xargs sed -i '' "s/_PROJECT_NAM
 
 echo "${green} successfully changed names ... ${reset}"
 
+echo "${green} install dependecies ... ${reset}"
+
+pipenv install --dev
+
 echo "${green} initialize git ... ${reset}"
 git init
 
@@ -23,13 +27,17 @@ wget -O git_validator.sh https://raw.githubusercontent.com/hemdesignstudio/git_v
 chmod +x git_validator.sh
 ./git_validator.sh
 rm git_validator.sh
-echo "${green} install dependecies ... ${reset}"
-
-pipenv install --dev
+git rm --cached .env
+echo "*.env" >> file
+git add .
+git commit -m "Initial Commit"
 
 echo "${green} makemigrations ... ${reset}"
 
 pipenv run python manage.py makemigrations
+
+echo "${green} builds ... ${reset}"
+docker-compose build
 
 echo "${green}Done ... ${reset}"
 

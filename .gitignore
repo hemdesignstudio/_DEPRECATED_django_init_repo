@@ -42,7 +42,6 @@ ehthumbs.db
 __Pycache__
 
 ######################
-*.env
 celerybeat-schedule
 celerybeat.pid
 .coverage

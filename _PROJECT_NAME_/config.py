@@ -7,7 +7,8 @@ import os
 
 import dj_database_url
 from dotenv import load_dotenv
-from corsheaders.defaults import default_headers
+
+# from corsheaders.defaults import default_headers
 
 
 class Base:
@@ -26,7 +27,6 @@ class Base:
 
     CORS_ORIGIN_ALLOW_ALL = False
     CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
-    CORS_ALLOW_HEADERS = list(default_headers) + ["id-token"]
 
 
 class Dev(Base):
