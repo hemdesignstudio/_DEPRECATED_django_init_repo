@@ -28,7 +28,7 @@ chmod +x git_validator.sh
 ./git_validator.sh
 rm git_validator.sh
 git rm --cached .env
-echo "*.env" >> file
+echo "*.env" >> .gitignore
 git add .
 git commit -m "Initial Commit"
 
